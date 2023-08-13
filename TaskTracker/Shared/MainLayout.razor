@@ -1,0 +1,196 @@
+﻿@inherits LayoutComponentBase
+@using MudBlazor.Utilities
+<MudThemeProvider Theme="@ThemeCustom"   IsDarkMode="Tema.ModoNocturno"/>
+<MudDialogProvider />
+<MudSnackbarProvider />
+<PageTitle>TaskTracker</PageTitle>
+
+<div class="page mb-3">
+    <div class="navbar-fixed-top">
+        <nav style="@($"border-bottom-color: {Tema.Color}; padding: 10px; {(Tema.ModoNocturno ? "background-color: #1a1a1a" : "background-color: #ffffff")}  ")" class="@($"navbar navbar-expand-md navbar-light {(Tema.ModoNocturno ? "navbar-dark" : "navbar-custom")}navbar navbar-expand-md  navbar-custom fixed-top navbar-lg")">
+            <div class="container-fluid">
+                <MudText Typo="Typo.h2" Style="@($"color: {Tema.Color}; font-size: 25px; font-weight: bold;")">
+                    <span font-weight: bold;">T</span>
+                    <span font-weight: bold;">A</span>
+                    <span font-weight: bold;">S</span>
+                    <span font-weight: bold;">K</span>
+                    <span font-weight: bold;"> </span>
+                    <span font-weight: bold;">T</span>
+                    <span font-weight: bold;">R</span>
+                    <span font-weight: bold;">A</span>
+                    <span font-weight: bold;">C</span>
+                    <span font-weight: bold;">K</span>
+                    <span font-weight: bold;">E</span>
+                    <span font-weight: bold;">R</span>
+                    <MudText Style="font-size: 12px; font-weight: bold;">
+                        <span font-weight: bold;"> </span>
+                        <span font-weight: bold;"> </span>
+                        <span font-weight: bold;"> </span>
+                        <span font-weight: bold;"> Un lienzo para usted</span>
+                    </MudText>
+                </MudText>
+
+
+
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+                        <MudPopover Open="@ShowColorPicker" AnchorOrigin="Origin.BottomCenter" Class="px-4 pt-4">
+                            <div class="d-flex flex-column" style="margin-bottom: 37px; ">
+
+                                @if (Tema.ModoNocturno)
+                                {
+                                    <MudColorPicker DisableToolbar="true" Class="colorpicker" @bind-Text="Tema.Color" AdornmentColor="MudBlazor.Color.Default" AdornmentIcon="@Icons.Material.Filled.Colorize" Adornment="Adornment.End" DisableModeSwitch="true" DisableAlpha="true" DisableInputs="true" DisableColorField="false" ColorPickerView="ColorPickerView.Palette" Palette="CustomPalette" IconSize="MudBlazor.Size.Medium" Style="font-weight: bold; margin-top: 1%;border-bottom: none; " PickerVariant="PickerVariant.Dialog" />
+                                }
+                                else
+                                {
+                                    <MudColorPicker DisableToolbar="true" Class="colorpicker" @bind-Text="Tema.Color" AdornmentColor="MudBlazor.Color.Dark" AdornmentIcon="@Icons.Material.Filled.Colorize" Adornment="Adornment.End" DisableModeSwitch="true" DisableAlpha="true" DisableInputs="true" DisableColorField="false" ColorPickerView="ColorPickerView.Palette" Palette="CustomPalette" IconSize="MudBlazor.Size.Medium" Style="font-weight: bold; margin-top: 1%;border-bottom: none; " PickerVariant="PickerVariant.Dialog" />
+                                }
+
+                            </div>
+                        </MudPopover>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" match>
+
+                                <MudIconButton Icon="@Icons.Material.Sharp.Person" Color="MudBlazor.Color.Primary"  @onclick="()=>{CerrarSesion = !CerrarSesion;}" Size="MudBlazor.Size.Medium"></MudIconButton>
+                            </a>
+                        </li>
+                        <MudPopover Open="@CerrarSesion" Paper="false" AnchorOrigin="Origin.CenterLeft" Delay="300" TransformOrigin="Origin.CenterRight" Class="px-4 pt-4">
+                            <div class="d-flex flex-column" style="border-radius: 10px; box-shadow: 0px;  ">
+
+
+
+                                <MudButton Variant="Variant.Filled" Style="top: -7px; right: -20px;" StartIcon="@Icons.Material.Filled.Logout" Color="MudBlazor.Color.Error">Cerrar Sesión</MudButton>
+
+
+
+
+                            </div>
+                        </MudPopover>
+                        <li class="nav-item">
+
+
+                            <a class="nav-link active" aria-current="page" match>
+                                <MudToggleIconButton @bind-Toggled="@ShowColorPicker"
+                                                     Icon="@Icons.Material.Filled.ColorLens" Style="@($"color: {Tema.Color};")" Title="Off"
+                                                     ToggledIcon="@Icons.Material.Rounded.Close" ToggledColor="@MudBlazor.Color.Error" ToggledTitle="On" />
+
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+
+
+                            <a class="nav-link active" aria-current="page" match>
+                                <MudToggleIconButton @bind-Toggled="Tema.ModoNocturno"
+                                                     Icon="@Icons.Material.Rounded.NightsStay" Color="MudBlazor.Color.Dark" Title="Activar Modo Oscuro"
+                                                     ToggledIcon="@Icons.Material.Rounded.WbSunny" ToggledColor="@MudBlazor.Color.Warning" ToggledTitle="Desactivar Modo Oscuro" />
+
+
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+
+
+                            <a class="nav-link active" aria-current="page" match>
+                                <MudChip Label="true" Style="@($"background-color: {Tema.Color}; color: white; font-size: 15px; margin-top: 9px; height: 30px;  border-radius: 10px;")">@Tema.Color</MudChip>
+
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </div>
+
+   
+</div>
+<main style="margin-top: 6.5%;">
+
+    @Body
+
+</main>
+
+@code{
+    protected override void OnInitialized()
+    {
+        Tema.SetMode();
+    }
+
+    private MudTheme ThemeCustom => new()
+    {
+
+            Palette = new PaletteLight
+            {
+                Primary = Tema.Color,
+                Surface = "#FAFAFA",
+                Background = "#FFFFFF",
+                TextPrimary = "#212121",
+                TextSecondary = "#212121"
+
+            },
+            PaletteDark = new PaletteDark
+            {
+                Secondary = "#CFD8DC",
+                Primary = Tema.Color,
+                Background = "#1a1a1a",
+                Surface = "#323232",
+                TextPrimary = "#FFFFFF",
+                TextSecondary = "#F7F7F7"
+
+
+            },
+
+            LayoutProperties = new LayoutProperties()
+            {
+                
+                DefaultBorderRadius = "10px"
+            }
+        };
+
+    public IEnumerable<MudColor> CustomPalette { get; set; } = new MudColor[]
+    {
+        "#1D5B79", // Azul suave
+        "#EF6262", // Rojo suave
+        "#F3AA60", // Naranja suave
+        "#F99B7D", // Rosa suave
+        "#E76161", // Rojo claro suave
+        "#B04759", // Rojo suave
+        "#8BACAA", // Verde azulado suave
+        "#41644A", // Verde oscuro suave
+        "#7A8F79", // Verde grisáceo suave
+        "#8C7D8F", // Gris lila suave
+        "#AE7260", // Terracota suave
+        "#6D8B85", // Verde oliva suave
+        "#846E64", // Marrón claro suave
+        "#6D8E94", // Azul grisáceo suave
+        "#94736C", // Marrón rosado suave
+        "#708E89", // Verde grisáceo suave
+        "#B08986", // Rosa pálido suave
+        "#8A6D7D", // Púrpura grisáceo suave
+        "#5A4A6D", // Púrpura suave
+        "#507B87", // Turquesa suave
+        "#A76B4F", // Marrón suave
+        "#6E8053", // Verde suave
+        "#92668C", // Lila suave
+        "#9E6B4A", // Naranja suave
+        "#5C7D75", // Verde azulado suave
+        "#89727D", // Gris púrpura suave
+        "#846E64", // Marrón claro suave
+        "#6D8E94", // Azul grisáceo suave
+        "#94736C", // Marrón rosado suave
+        "#708E89"  // Verde grisáceo suave
+
+    };
+    
+    public bool CerrarSesion = false;
+
+    public bool ShowColorPicker = false;
+}

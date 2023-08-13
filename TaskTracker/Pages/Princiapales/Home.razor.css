@@ -1,0 +1,210 @@
+﻿.demo-mat-card {
+    /* Agrega cualquier estilo adicional que necesites para el MudPaper */
+    padding: 20px;
+    text-align: center;
+}
+
+.avatar-container {
+    margin-top: 3px;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.corner-button {
+    top: 0px;
+    margin-right: -100px;
+}
+
+.label-container {
+    margin-top: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 23px;
+}
+
+.tab-content {
+    margin-bottom: 10px;
+    margin-top: 30px;
+    height: 430px;
+    max-height: 350px; /* Tamaño máximo del contenido con scroll */
+    overflow-y: auto; /* Agrega barra de desplazamiento vertical si es necesario */
+}
+
+.scrollable-content {
+    padding: 10px; /* Espacio interno para evitar que el contenido toque los bordes */
+}
+
+.non-scrollable-content {
+    padding: 10px; /* Espacio interno para evitar que el contenido toque los bordes */
+}
+
+.label-container-sub {
+    margin-top: 0px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.button-container {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.demo-mat-card {
+    max-width: 400px;
+    height: 470px;
+    margin-top: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.06);
+}
+
+.tab {
+    max-width: 1180px;
+    height: 450px;
+    margin-top: 20px;
+    border-radius: 10px;
+    width: 800px;
+}
+
+.carddos {
+    max-width: 1200px;
+    height: 470px;
+    margin-top: 20px;
+    border-radius: 0px;
+    border-radius: 10px;
+    width: 800px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+}
+
+.demo-mat-card-content {
+    padding: 1rem;
+}
+
+.demo-mat-card-clean-margin {
+    margin: 0px;
+}
+
+.item {
+    animation: fade-in-reverse 0.5s ease-in-out;
+    transition: transform 0.3s ease-out;
+}
+
+    .item:hover {
+        transform: translateY(-5px);
+    }
+
+@keyframes scale-up-center {
+    0% {
+        transform: scale(0.5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.search-wrapper {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+}
+
+.layout {
+    width: 1366px;
+    height: 768px;
+    display: grid;
+    grid: "header header header" auto "leftSide body rightSide" 1fr "footer footer footer" auto / auto 1fr auto;
+    gap: 8px;
+}
+
+.leftSide {
+    grid-area: leftSide;
+}
+
+.rightSide {
+    grid-area: rightSide;
+}
+
+.card-item {
+    flex-basis: calc(33.33% - 16px); /* Máximo 3 tarjetas por fila */
+    margin: 8px; /* Espaciado entre las tarjetas */
+}
+
+
+
+
+.closing-modal {
+    animation: fade-out 0.5s ease-out;
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+.modal-container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    border-radius: 4px;
+    padding: 16px;
+}
+
+@keyframes fade-in-reverse {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.options {
+    top: 0px;
+    right: 100px;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: -8px; /* Ajustar el espaciado entre las tarjetas */
+}
+
+.search-wrapper.active {
+}
+
+.search-wrapper .input-holder {
+    height: 70px;
+    width: 70px;
+    overflow: hidden;
+    background: rgba(255,255,255,0);
+    border-radius: 6px;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+}
+
+.search-wrapper.active input.input-holder {
+    width: 450px;
+    border-radius: 50px;
+    background: rgba(0,0,0,5);
+}

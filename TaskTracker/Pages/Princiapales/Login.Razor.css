@@ -1,0 +1,83 @@
+﻿
+
+
+html, body {
+    height: 100%;
+    margin: 0; /* Agrega margen cero para evitar espacios no deseados */
+    font-weight: 800;
+    display: flex;
+    flex-direction: column; /* Cambia la dirección de flexbox a columna */
+    overflow-y: auto;
+}
+
+body {
+    background: yellow;
+    font-family: Arial;
+    flex: 1; /* Permite que el cuerpo ocupe el espacio restante */
+    display: flex;
+    justify-content: center; /* Centra los elementos horizontalmente */
+    align-items: center; /* Centra los elementos verticalmente */
+    /* Evita barras de desplazamiento innecesarias en el body */
+}
+
+svg {
+    display: block; /* Cambia a display bloque para ocupar todo el espacio disponible */
+    font: 10.5em 'Montserrat';
+    width: 90%; /* Cambia el ancho a un valor relativo */
+    max-width: 990px; /* Agrega un ancho máximo */
+    height: auto; /* Permite que la altura se ajuste proporcionalmente */
+    margin: 0 auto;
+
+}
+
+.text-copy {
+    fill: none;
+    stroke: white;
+    stroke-dasharray: 6% 29%;
+    stroke-width: 5px;
+    stroke-dashoffset: 0%;
+    animation: stroke-offset 5.5s infinite linear;
+}
+
+    .text-copy:nth-child(1) {
+        stroke: #0A4D68;
+        animation-delay: -1s; /* Agrega "s" después de los valores negativos */
+    }
+    .text-copy:nth-child(2) {
+        stroke: #088395;
+        animation-delay: -2s;
+    }
+
+    .text-copy:nth-child(3) {
+        stroke: #210062;
+        animation-delay: -3s;
+    }
+
+    .text-copy:nth-child(4) {
+        stroke: #19376D;
+        animation-delay: -4s;
+    }
+
+    .text-copy:nth-child(5) {
+        stroke: #A5D7E8;
+        animation-delay: -5s;
+    }
+
+/* ... Repite para los otros elementos .text-copy ... */
+
+@keyframes stroke-offset {
+    100% {
+        stroke-dashoffset: -35%;
+    }
+}
+
+@media all and (max-width: 500px) {
+    body {
+        overflow-y: visible;
+    }
+}
+
+@media all and (max-height: 500px) {
+    body {
+        overflow-y: visible;
+    }

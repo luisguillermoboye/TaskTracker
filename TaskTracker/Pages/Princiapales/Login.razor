@@ -1,0 +1,203 @@
+﻿@page "/"
+
+
+<style>
+
+    .modal-container{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        z-index: 10010;
+   
+        transform: translate(-50%, -50%);
+       
+        min-height: 300px;
+        margin: 0;
+        flex-direction: column;
+      
+        flex: 1;
+        overflow-y: auto;
+      
+        
+    }
+    .custom-card {
+        
+      
+        
+        height: fit-content;
+        width: 282px;
+     
+        border-radius: 10px;
+        border: none; /* Elimina el borde innecesario */
+        position: relative; /* Cambia a relative para permitir contenido absoluto */
+        box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    .demo-mat-card {
+        max-width: 400px;
+        height: 470px;
+        margin: 0 auto; /* Centra horizontalmente */
+        border-radius: 10px;
+        box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1), 0 8px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    .title-container {
+        display: flex;
+        justify-content: center;
+        align-items: center; /* Centra verticalmente */
+        text-align: center;
+        margin-bottom: 16px;
+    }
+
+    .close-button {
+        position: absolute;
+        top: 8px;
+        left: 8px;
+    }
+
+    .mud-card-content {
+        padding: 24px;
+    }
+</style>
+<svg viewBox="0 0 960 300">
+    <symbol id="s-text">
+        <text text-anchor="middle" x="50%" y="80%">TSKTRCKR</text>
+        <text text-anchor="middle" x="52%" y="80%"> </text>
+
+    </symbol>
+
+    <g class="g-ants">
+        <use xlink:href="#s-text" class="text-copy"></use>
+        <use xlink:href="#s-text" class="text-copy"></use>
+        <use xlink:href="#s-text" class="text-copy"></use>
+        <use xlink:href="#s-text" class="text-copy"></use>
+        <use xlink:href="#s-text" class="text-copy"></use>
+    </g>
+
+   
+</svg>
+<div style="display: flex; justify-content: center;" >
+   
+        <MudButton OnClick="()=>{OpenLogin = true;}"  Color="MudBlazor.Color.Primary"  Style="@($"border-radius: 10px; width: max; margin: 0 auto; font-weight: bold; font-size: 15px;")">Ingresar  a TASKTRACKER</MudButton>
+    
+</div>
+
+ 
+
+\
+
+
+            @if (OpenLogin)
+            {
+
+                <div class="modal-container mt-10" style="@($" display: flex; align-items: center; justify-content: center;")">
+                          
+                            <MudCard class="custom-card" Style="max-width: 400px;">
+                               
+                                <MudTabs TabPanelHeaderPosition="TabHeaderPosition.After" ApplyEffectsToContainer="true"    Centered="true" Elevation="2" Rounded="true" PanelClass="pa-2">
+
+                                    <MudTabPanel   Text="Iniciar Sesión ">
+
+
+                                        <ChildContent >
+                                            <MudCardContent>
+                                            
+                                            
+                                            
+
+                                                <EditForm Model="@modeluser" OnValidSubmit="IniciarSesion">
+                                                    <div style="margin-top: 20px;">
+                                                        <MudTextField Label="Usuario" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Rounded.Person" AdornmentColor="Color.Primary" @bind-Value="modeluser.Nombre" For="@(() => modeluser.Nombre)" />
+                                                    </div>
+                                                    <div style="margin-top: 20px;">
+                                                        <MudTextField Label="Clave" Variant="Variant.Outlined" InputType="@PasswordInput" Adornment="Adornment.End" AdornmentIcon="@PasswordInputIcon" OnAdornmentClick="TogglePasswordVisibility" AdornmentColor="Color.Primary" AdornmentAriaLabel="ver clave" @bind-Value="modeluser.Clave" For="@(() => modeluser.Clave)" />
+                                                    </div>
+                                                    <div style="display: flex; justify-content: center; margin-top: 20px;">
+
+                                        <MudButton Color="Color.Primary" Variant="Variant.Filled" EndIcon="@Icons.Material.Rounded.PlayArrow" Class="text text-center" ButtonType="MudBlazor.ButtonType.Submit">Ingresar</MudButton>
+                                                    </div>
+                                                </EditForm>
+                                            </MudCardContent>
+                                            <MudCardActions Style="display: flex; align-items: center; justify-content: center; flex-direction: column;">
+                                                <p class="text-center">
+                                                    <MudButton Color="Color.Primary" Variant="Variant.Outlined" StartIcon="@Icons.Custom.Brands.Google" Class="text text-center" Href="./Identity/Login">Inicia Sesión con Google</MudButton>
+                                                </p>
+                                            </MudCardActions>
+
+                                        </ChildContent>
+                                        
+                                    </MudTabPanel>
+
+                                    <MudTabPanel  Text="Registrarse">
+
+                                        <ChildContent>
+
+
+                        <div style="margin-top: 20px;">
+                            <form>
+
+                                <div style="margin-top: 20px;">
+                                    <input type="text" class="img-fluid col-10 " placeholder="Nombre de Usuario" required>
+                                </div>
+                                <div style="margin-top: 20px;">
+                                    <input type="email" class="img-fluid col-9" placeholder="Correo Electronico" required>
+                                </div>
+                                <div style="margin-top: 20px;">
+                                    <input type="password" class="img-fluid col-10" placeholder="Contraseña" required>
+                                </div>
+                                <div style="margin-top: 20px;">
+                                    <input type="password" class="img-fluid col-8" placeholder="Comfimar Contraseña" required>
+                                </div>
+                                <div>
+                                    <input type="checkbox" class="check-box col-2"><span> Acepto los Terminos</span>
+                                </div>
+
+                            </form>
+                        </div>
+                                             <div style="display: flex; justify-content: center; margin-top: 20px;">
+                                                    <MudButton Class="text text-center" Color="Color.Primary">Registrarse</MudButton>
+                                            </div>
+                                        </ChildContent>
+                                        
+                                    </MudTabPanel>
+                                </MudTabs>
+                            </MudCard>
+                </div>
+
+
+            }
+
+<MudOverlay ZIndex="1000"@bind-Visible="OpenLogin" DarkBackground="Tema.ModoNocturno" LightBackground="@(!Tema.ModoNocturno)" AutoClose="true" />
+@code {
+    public void IniciarSesion()
+    {
+
+    }
+    private ModelData modeluser = new ModelData();
+    private InputType PasswordInput = InputType.Password;
+    private bool isShow = false;
+    private string PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
+
+    private void TogglePasswordVisibility()
+    {
+        isShow = !isShow;
+        PasswordInputIcon = isShow ? Icons.Material.Filled.Visibility : Icons.Material.Filled.VisibilityOff;
+        PasswordInput = isShow ? InputType.Text : InputType.Password;
+    }
+
+    protected override void OnInitialized()
+    {
+        Tema.SetMode();
+    }
+
+    public bool OpenLogin = false;
+    private class ModelData
+    {
+        [Required(ErrorMessage = "Ingrese su nombre de usuario.")]
+        public string Nombre { get; set; }
+
+        [Required(ErrorMessage = "Ingrese su clave.")]
+        public string Clave { get; set; }
+    }
+    
+}
